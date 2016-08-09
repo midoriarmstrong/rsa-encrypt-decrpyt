@@ -48,10 +48,11 @@ public class RSAAlgorithm {
                 generateKeys();
             }
             else {
-                System.out.println("Please input d or e");
+                System.out.println("Please input d, e, or g");
+                choosePath();
             }
         } catch (IOException e) {
-            System.out.println("Input d or e please!");
+            System.out.println("Oops! Something went wrong. Please try again");
         }
     }
 
@@ -59,13 +60,13 @@ public class RSAAlgorithm {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String userInput = new String();
         BigInteger ciphertext = new BigInteger("0");
-        System.out.println("Please input an integer");
+        System.out.println("Please input your message");
         try {
             userInput = br.readLine();
             ciphertext = new BigInteger(userInput);
 
         } catch (IOException e1) {
-            System.out.println("Please input an integer!");
+            System.out.println("Oops! Something went wrong. Please try again");
         }
 
         ciphertext = ciphertext.modPow(e, n);
@@ -81,7 +82,7 @@ public class RSAAlgorithm {
             ciphertext = new BigInteger(userInput);
 
         } catch (IOException e1) {
-            System.out.println("Please input an integer!");
+            System.out.println("Oops! Something went wrong. Please try again");
         }
         ciphertext = ciphertext.modPow(d, n);
         System.out.println("The decrpyted message is: " + ciphertext.toString());
