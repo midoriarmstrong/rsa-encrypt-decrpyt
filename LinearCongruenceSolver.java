@@ -6,6 +6,7 @@ import java.math.BigInteger;
  * Created by Midori on 2016-08-09.
  */
 public class LinearCongruenceSolver {
+    //solves linear congruence in form ax = b (mod n). Returns x where 1 < x < n
     public static BigInteger solveCongruence(BigInteger a, BigInteger b, BigInteger n) {
         BigInteger gcd = a.gcd(n);
         System.out.println("GCD: " + gcd.toString());
@@ -16,7 +17,9 @@ public class LinearCongruenceSolver {
         numArray[1] = a;
         quotientArray[0] = new BigInteger("0");
         quotientArray[1] = quotientArray[0];
+        
         System.out.println("EEA: ");
+        
         do {
             count++;
             quotientArray[count] = num1.divide(num2);
@@ -29,6 +32,7 @@ public class LinearCongruenceSolver {
         y = quotientArray[count].multiply(new BigInteger("-1"));
 
         System.out.println("Reverse substitution: ");
+        
         while (count > 1) {
             BigInteger temp = y;
             y = x.add(y.multiply(quotientArray[count - 1].multiply(new BigInteger("-1"))));
@@ -43,7 +47,7 @@ public class LinearCongruenceSolver {
             answer = answer.multiply(division[0]);
             BigInteger m = n.divide(gcd);
             answer = answer.mod(m);
-            System.out.println(answer.toString() + " (mod " + m.toString() + ")");
+            System.out.println("Complete solution: " + answer.toString() + " (mod " + m.toString() + ")");
         }
         else {
             answer = null;
