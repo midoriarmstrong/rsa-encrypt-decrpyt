@@ -85,9 +85,6 @@ public class EncryptDecrypt {
             case "r":
                 rsa.resetKeys();
                 break;
-            case "l":
-                LinearCongruence.solveCongruence(new BigInteger("37"), new BigInteger("1"), new BigInteger("63"));
-                break;
             default:
                 System.out.println("Unknown option");
                 break;
